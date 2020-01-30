@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block body_block%}
+  <h1>Authors</h1>
+  <ul class="list-group">
+    {% for author in page_obj  %}
+      <li  class="list-group-item">
+        <table >
+          <th>
+              <div float='left'><img width="50" height="50" src="https://lh6.googleusercontent.com/proxy/AgD2G1debsPmwO39aDhF4qLWm1GJ2iFGu_ctF4Psh-NY4lBBqvQpKyyJRd7oZVTRfEYtiJqqaHptNQXwulyCdw5Wu82VoQcIX7V3P1DqBCO1nw" alt="book"></div>
+          </th>
+          <th align="left">
+            <div>
+              <a href="{% url 'mdeo:author-detail' author.id %}"><p>Name: {{ author.name }}</p></a>
+              <p>Ocupation: {{ author.ocupation }}</p>
+            </div>
+          </th>
+        </table>
+      </li>
+    {% empty %}
+      <li>No authors yet.</li>
+    {% endfor %}
+</ul>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+
+      {% if page_obj.has_previous %}
+        <li class="page-item"><a href="?page={{ page_obj.previous_page_number }}" class="page-link" >Previous</a></li>
+      {% endif %}
+       <li class="current page-item active "><a class="page-link" >{{ page_obj.number }}</a></li>
+
+      {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
+      {% endif %}
+
+  </ul>
+</nav>
+
+{% endblock %}
