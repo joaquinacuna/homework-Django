@@ -23,3 +23,23 @@ class BookListView(ListView):
          object_list = Book.objects.all()
          context['object_list']=object_list
          return context
+
+def index(request):
+    return render(request,'index.html')
+
+class AuthorDetailView(DetailView):
+    model = Author
+    template_name= 'author_detail.html'
+    def get_context_data(self, **kwargs):
+        context = super(AuthorDetailView, self).get_context_data(**kwargs)
+        return context
+
+class AuthorListView(ListView):
+    model = Author
+    template_name= 'author_list.html'
+    paginate_by = 10
+    def get_context_data(self, **kwargs):
+         context = super(AuthorListView, self).get_context_data(**kwargs)
+         object_list = Author.objects.all()
+         context['object_list']=object_list
+         return context

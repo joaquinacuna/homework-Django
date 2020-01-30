@@ -1,5 +1,14 @@
-<h1>{{ object.headline }}</h1>
-<p>{{ object.content }}</p>
-<p>Reporter: {{ object.reporter }}</p>
-<p>Published: {{ object.pub_date|date }}</p>
-<p>Date: {{ now|date }}</p>
+<!DOCTYPE html>
+{% extends "base.html" %}
+    {% block body_block%}
+      <h1>Book Detail</h1>
+      <p>Name: {{ book.name }}</p>
+      <p>Pages: {{ book.pages }}</p>
+      <p>Topic: {{ book.topic }}</p>
+      <p>Date: {{ book.date }}</p>
+      {% for autors in book.author.all %}
+        <p>Authors: {{autors.name}}</p>
+      {% empty %}
+          empty list!
+      {%endfor%}
+    {% endblock %}
