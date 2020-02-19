@@ -3,8 +3,9 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from . import forms
 
-from models import Book,Author
+from .models import Book,Author
 # Create your views here.
 
 class BookDetailView(DetailView):
@@ -26,6 +27,16 @@ class BookListView(ListView):
 
 def index(request):
     return render(request,'index.html')
+
+def from_create_author_view(request):
+    form = forms.AuthorForm()
+    return render(request,'author_form.html',{'form':form})
+
+def from_create_book_view(request):
+    form = forms.BookForm()
+    return render(request,'book_form.html',{'form':form})
+
+
 
 class AuthorDetailView(DetailView):
     model = Author

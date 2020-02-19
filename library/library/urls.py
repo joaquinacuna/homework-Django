@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.conf.urls import url, include
-from libraryMontevideo.urls import urlpatterns as mdeo_urls
+from libraryMontevideo import urls as mdeo_urls
 from libraryMontevideo import views
 urlpatterns = [
     url(r'^$',views.index,name='index'),
