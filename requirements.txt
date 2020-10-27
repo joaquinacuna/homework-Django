@@ -1,6 +1,6 @@
 bcrypt==3.1.7
 cffi==1.13.2
-cryptography==2.8
+cryptography==3.2
 Django==1.11.27
 enum34==1.1.6
 fabric==2.5.0
